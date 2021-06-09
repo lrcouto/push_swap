@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/06/06 18:45:49 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/06/08 23:27:07 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 */
 
 # define NO_INPUT "This program expects a series of integers as an argument."
+
+# define NOT_DIGIT "Input contains symbols that are not digits."
 
 /*
 ** ERROR HANDLING FUNCTIONS:
