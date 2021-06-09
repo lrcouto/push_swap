@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/06/08 23:27:07 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/06/09 02:49:28 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define NO_INPUT "This program expects a series of integers as an argument."
 
 # define NOT_DIGIT "Input contains symbols that are not digits."
+
+# define INPUT_TOO_HIGH "One of your arguments is higher than the int limit."
+
+# define INPUT_TOO_LOW "One of your arguments is lower than the int limit."
 
 /*
 ** ERROR HANDLING FUNCTIONS:
