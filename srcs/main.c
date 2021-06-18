@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/06/09 02:58:29 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/06/17 21:21:15 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 
 static int	arg_string_to_int(char *current_arg)
 {
-	int	current_number;
+	long long int	current_number;
 
 	current_number = ft_atoll(current_arg);
 	if (current_number > INT_MAX)
 		exit_with_error(INPUT_TOO_HIGH);
 	else if (current_number < INT_MIN)
 		exit_with_error(INPUT_TOO_LOW);
-	return (current_number);
+	return ((int)current_number);
 }
 
 
