@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/06/17 21:21:15 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/12 01:13:23 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/*
-** TODO: Fix int verification.
-*/
 
 static int	arg_string_to_int(char *current_arg)
 {
@@ -28,28 +24,13 @@ static int	arg_string_to_int(char *current_arg)
 	return ((int)current_number);
 }
 
-
-static void	is_arg_digits(char *current_arg)
-{
-	int	i;
-
-	i = 0;
-	if (current_arg[0] == '-' || current_arg[0] == '+')
-		i = 1;
-	while (current_arg[i])
-	{
-		if (ft_isdigit((int)current_arg[i]) == 0)
-			exit_with_error(NOT_DIGIT);
-		i++;
-	}
-}
-
 static void	read_and_store_input(char **argv)
 {
 	int	i;
 	int	current_number;
 
 	i = 1;
+	check_for_duplicates(argv);
 	ft_putendl_fd("Here is your input:", 1);
 	while (argv[i] != NULL)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_message.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/06/09 02:49:28 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/12 00:57:48 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@
 
 # define INPUT_TOO_LOW "One of your arguments is lower than the int limit."
 
+# define DUPLICATE_INPUT "Input contains duplicate arguments."
+
 /*
 ** ERROR HANDLING FUNCTIONS:
 */
 
 void	exit_with_error(char *error_message);
+void	check_for_duplicates(char **argv);
+void	is_arg_digits(char *current_arg);
 
 #endif
