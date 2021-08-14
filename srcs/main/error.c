@@ -6,11 +6,11 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:24:57 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/12 00:58:56 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/14 16:17:33 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	is_arg_digits(char *current_arg)
 {

@@ -6,14 +6,14 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/12 00:57:48 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/14 16:18:20 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_MESSAGE_H
 # define ERROR_MESSAGE_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <errno.h>

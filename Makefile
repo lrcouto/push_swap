@@ -3,34 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lcouto <lcouto@student.42.fr>              +#+  +:+       +#+         #
+#    By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 00:46:31 by lcouto            #+#    #+#              #
-#    Updated: 2021/06/06 00:47:12 by lcouto           ###   ########.fr        #
+#    Updated: 2021/08/14 16:23:25 by lcouto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME		= push_swap
 
-HEADERS = include
+INCLUDES	= -I include -I $(LIBFT_DIR)/includes/
 
-DIR_SRCS = srcs
+LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT_DIR	= libft
+LFT_FLAGS	= -L $(LIBFT_DIR) -lft
 
-DIR_OBJS = objs
+CC			= clang
+CFLAGS		= -Wall -Wextra -Werror -g
+RM			= /bin/rm -f
 
-SRC = $(wildcard $(DIR_SRCS)/*.c)
+DIR_SRCS	= srcs
+DIR_OBJS	= objs
+SUBDIRS		= main
 
-OBJS = $(subst $(DIR_SRCS),$(DIR_OBJS),$(SRC:.c=.o))
-
-CC	= clang
-
-RM	= rm -rf
-
-CFLAGS	= -Wall -Wextra -Werror -g3 -I $(HEADERS)
-
-LIBFT = libft
-
-FLAGS = -L $(LIBFT) -lft
+SRCS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_SRCS)/, $(dir)))
+OBJS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))
+SRCS		= $(foreach dir, $(SRCS_DIRS), $(wildcard $(dir)/*.c))
+OBJS		= $(subst $(DIR_SRCS), $(DIR_OBJS), $(SRCS:.c=.o))
 
 ifeq ($(SANITIZE_A),true)
 	CFLAGS += -fsanitize=address -fno-omit-frame-pointer
@@ -40,27 +39,30 @@ ifeq ($(SANITIZE_L),true)
 	CFLAGS += -fsanitize=leak -fno-omit-frame-pointer
 endif
 
-$(NAME): $(OBJS)
-		@make -C $(LIBFT)
-		-$(CC) $(CFLAGS) $(OBJS) $(FLAGS) $(HEADER) -o $(NAME)
+$(DIR_OBJS)/%.o :	$(DIR_SRCS)/%.c
+			@mkdir -p $(DIR_OBJS) $(OBJS_DIRS)
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+			@echo "Compiled "$<" successfully!"
 
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
-		@mkdir -p objs
-		@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
-		@echo "Compiled "$<" successfully!"
+all:		$(NAME)
 
-all: $(NAME)
+$(LIBFT):
+			@make --no-print-directory -C $(LIBFT_DIR)
+
+$(NAME):	$(OBJS) $(LIBFT)
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS) $(LFT_FLAGS)
+			@echo "created push_swap executable file successfully!"
 
 clean:
-		make clean -C $(LIBFT)
-		$(RM) $(OBJS)
-		$(RM) $(DIR_OBJS)
+			@make clean --no-print-directory -C $(LIBFT_DIR)
+			@$(RM) $(OBJS)
+			@$(RM) -r $(DIR_OBJS)
+			@echo "Cleanup completed!"
 
-fclean:	clean
-		make fclean -C $(LIBFT)
-		$(RM) $(NAME)
-		$(RM) $(DIR_OBJS)
+fclean:		clean
+			@make fclean --no-print-directory -C $(LIBFT_DIR)
+			@$(RM) $(NAME)
 
-re:		fclean all
+re:			fclean all
 
-PHONY:	all clean fclean re
+.PHONY:		all clean fclean re
