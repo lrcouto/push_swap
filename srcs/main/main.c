@@ -6,46 +6,73 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/14 16:18:46 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/15 04:16:07 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	arg_string_to_int(char *current_arg)
+t_int_list	*node_last(t_int_list *list)
 {
-	long long int	current_number;
+	t_int_list	*temp;
 
-	current_number = ft_atoll(current_arg);
-	if (current_number > INT_MAX)
-		exit_with_error(INPUT_TOO_HIGH);
-	else if (current_number < INT_MIN)
-		exit_with_error(INPUT_TOO_LOW);
-	return ((int)current_number);
+	if (list == NULL)
+		return (list);
+	temp = list;
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
 }
 
-static void	read_and_store_input(char **argv)
+void	node_add_back(t_int_list **list, t_int_list *new_node)
 {
-	int	i;
-	int	current_number;
+	t_int_list	*temp;
+
+	if (new_node == NULL)
+		return ;
+	if (*list == NULL)
+	{
+		*list = new_node;
+		return ;
+	}
+	temp = node_last(*list);
+	temp->next = new_node;
+	new_node->previous = temp;
+}
+
+void	setup_stacks(t_stack *stack, char **argv)
+{
+	int			i;
+	t_int_list	*new_node;
 
 	i = 1;
-	check_for_duplicates(argv);
-	ft_putendl_fd("Here is your input:", 1);
-	while (argv[i] != NULL)
+	while (argv[i])
 	{
-		is_arg_digits(argv[i]);
-		current_number = arg_string_to_int(argv[i]);
-		ft_putnbr_fd(current_number, 1);
-		write(1, "\n", 1);
+		new_node = (t_int_list *)ft_calloc(sizeof(t_int_list), 1);
+		new_node->number = ft_atoi(argv[i]);
+		new_node->next = NULL;
+		new_node->previous = NULL;
+		node_add_back(&stack->a, new_node);
 		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
+	t_stack		*stack;
+	t_int_list	*a;
+	t_int_list	*b;
+
+	stack = (t_stack *)ft_calloc(sizeof(t_stack), 1);
+	a = NULL;
+	b = NULL;
+	stack->a = a;
+	stack->b = b;
 	if (argc == 1)
 		exit_with_error(NO_INPUT);
-	read_and_store_input(argv);
+	check_for_errors(argv);
+	ft_putendl_fd("Here is your input:", 1);
+	print_2d_array_fd(argv, 1);
+	setup_stacks(stack, argv);
 	return (0);
 }

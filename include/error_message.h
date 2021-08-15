@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/14 16:18:20 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/15 02:23:30 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 */
 
 void	exit_with_error(char *error_message);
-void	check_for_duplicates(char **argv);
-void	is_arg_digits(char *current_arg);
+void	check_for_errors(char **argv);
 
 #endif
