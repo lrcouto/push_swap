@@ -6,13 +6,24 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:24:57 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/14 16:17:33 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/15 02:40:33 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	is_arg_digits(char *current_arg)
+static void	check_int_limit(char *current_arg)
+{
+	long long int	current_number;
+
+	current_number = ft_atoll(current_arg);
+	if (current_number > INT_MAX)
+		exit_with_error(INPUT_TOO_HIGH);
+	else if (current_number < INT_MIN)
+		exit_with_error(INPUT_TOO_LOW);
+}
+
+static void	check_for_digits(char *current_arg)
 {
 	int	i;
 
@@ -27,7 +38,7 @@ void	is_arg_digits(char *current_arg)
 	}
 }
 
-void	check_for_duplicates(char **argv)
+void	check_for_errors(char **argv)
 {
 	int	i;
 	int	j;
@@ -42,6 +53,8 @@ void	check_for_duplicates(char **argv)
 				exit_with_error(DUPLICATE_INPUT);
 			j++;
 		}
+		check_for_digits(argv[i]);
+		check_int_limit(argv[i]);
 		i++;
 	}
 }

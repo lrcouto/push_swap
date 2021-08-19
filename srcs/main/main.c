@@ -6,46 +6,74 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/14 16:18:46 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/19 02:25:12 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	arg_string_to_int(char *current_arg)
+t_node	*node_last(t_node *list)
 {
-	long long int	current_number;
+	t_node	*current;
 
-	current_number = ft_atoll(current_arg);
-	if (current_number > INT_MAX)
-		exit_with_error(INPUT_TOO_HIGH);
-	else if (current_number < INT_MIN)
-		exit_with_error(INPUT_TOO_LOW);
-	return ((int)current_number);
+	if (list == NULL)
+		return (list);
+	current = list;
+	while (current->next != NULL)
+		current = current->next;
+	return (current);
 }
 
-static void	read_and_store_input(char **argv)
+void	node_add_back(t_node **list, t_node *new_node)
 {
-	int	i;
-	int	current_number;
+	t_node	*current;
+
+	if (new_node == NULL)
+		return ;
+	if (*list == NULL)
+	{
+		*list = new_node;
+		return ;
+	}
+	current = node_last(*list);
+	current->next = new_node;
+	new_node->previous = current;
+}
+
+void	setup_stacks(t_board *stack, char **argv)
+{
+	int			i;
+	t_node	*new_node;
 
 	i = 1;
-	check_for_duplicates(argv);
-	ft_putendl_fd("Here is your input:", 1);
-	while (argv[i] != NULL)
+	while (argv[i])
 	{
-		is_arg_digits(argv[i]);
-		current_number = arg_string_to_int(argv[i]);
-		ft_putnbr_fd(current_number, 1);
-		write(1, "\n", 1);
+		new_node = (t_node *)ft_calloc(sizeof(t_node), 1);
+		new_node->number = ft_atoi(argv[i]);
+		new_node->next = NULL;
+		new_node->previous = NULL;
+		node_add_back(&stack->a, new_node);
 		i++;
 	}
+	connect_nodes(stack->a, node_last(stack->a));
 }
 
 int	main(int argc, char **argv)
 {
+	t_board		*stack;
+	t_node	*pop;
+
+	stack = (t_board *)ft_calloc(sizeof(t_board), 1);
+	stack->a = NULL;
+	stack->b = NULL;
 	if (argc == 1)
 		exit_with_error(NO_INPUT);
-	read_and_store_input(argv);
-	return (0);
+	check_for_errors(argv);
+	setup_stacks(stack, argv);
+	//test functions from here on
+	pop = pop_node(&stack->a);
+	push_node(pop, &stack->b);
+	swap_nodes(stack->a, stack->a->next);
+	// end test functions
+	exit(0);
 }
