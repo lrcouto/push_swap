@@ -16,3 +16,5 @@ Part of the basic curriculum at <a href='http://42sp.org.br'> 42 São Paulo</a>.
    **June 7th 2021** - Set up a basic error message function and created the structs that will hold my stacks. I will use circular doubly linked lists, as I think it'll make it easier to implement the stack rotation rules. I'm trying to make my code as human-readable as possible, as this is one of the skills I feel like I need to improve on. My next step will be to validate the input, and then to insert it into the list.
 
   **June 8th 2021** - Working on verifying if the input is valid. Current challenge is finding where is the best moment to verify if the input is above or below int limit.
+  
+  **August 19th 2021** - After a little 2-month break to focus on minishell, we're back to push_swap! All error handling is done, and the setup for my stacks is ready. I chose to use circular doubly linked lists to make rotation operations easier. I've also implemented basic stack operations, like pop, push and swap. Next step is to implement the push_swap moves.
