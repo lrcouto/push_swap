@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:07 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/14 16:18:24 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/19 02:24:32 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,26 @@
 ** STRUCTS:
 */
 
-typedef struct s_int_list
+typedef struct s_node
 {
 	int					number;
-	struct s_int_list	*next;
-	struct s_int_list	*previous;
-}						t_int_list;
+	struct s_node	*next;
+	struct s_node	*previous;
+}						t_node;
 
-typedef struct s_stack
+typedef struct s_board
 {
-	t_int_list	*a;
-	t_int_list	*b;
-}				t_stack;
+	t_node	*a;
+	t_node	*b;
+}				t_board;
+
+/*
+** BASIC STACK OPERATIONS:
+*/
+
+void	connect_nodes(t_node *first, t_node *second);
+t_node	*pop_node(t_node **stack);
+void	push_node(t_node *pop, t_node **stack);
+void	swap_nodes(t_node *first, t_node *second);
 
 #endif
