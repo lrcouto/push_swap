@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/19 02:25:12 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/22 21:50:36 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	node_add_back(t_node **list, t_node *new_node)
 
 void	setup_stacks(t_board *stack, char **argv)
 {
-	int			i;
+	int		i;
 	t_node	*new_node;
 
 	i = 1;
@@ -60,8 +60,7 @@ void	setup_stacks(t_board *stack, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_board		*stack;
-	t_node	*pop;
+	t_board	*stack;
 
 	stack = (t_board *)ft_calloc(sizeof(t_board), 1);
 	stack->a = NULL;
@@ -70,10 +69,5 @@ int	main(int argc, char **argv)
 		exit_with_error(NO_INPUT);
 	check_for_errors(argv);
 	setup_stacks(stack, argv);
-	//test functions from here on
-	pop = pop_node(&stack->a);
-	push_node(pop, &stack->b);
-	swap_nodes(stack->a, stack->a->next);
-	// end test functions
 	exit(0);
 }

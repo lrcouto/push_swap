@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 21:22:13 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/19 02:40:39 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/22 20:32:58 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ t_node	*pop_node(t_node **stack)
 	if (!head)
 		return (NULL);
 	pop = head;
-	tail = head->previous;
-	head = head->next;
-	connect_nodes(head, tail);
+	if (head->next != head)
+	{
+		tail = head->previous;
+		head = head->next;
+		connect_nodes(head, tail);
+	}
+	else
+		head = NULL;
 	pop->previous = NULL;
 	pop->next = NULL;
 	*stack = head;
