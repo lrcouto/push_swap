@@ -20,3 +20,5 @@ Part of the basic curriculum at <a href='http://42sp.org.br'> 42 São Paulo</a>.
   **August 19th 2021** - After a little 2-month break to focus on minishell, we're back to push_swap! All error handling is done, and the setup for my stacks is ready. I chose to use circular doubly linked lists to make rotation operations easier. I've also implemented basic stack operations, like pop, push and swap. Next step is to implement the push_swap moves.
 
   **August 22nd 2021** - Implemented all the rules described on the push_swap subject document. Next up is figuring out my sorting algorithm.
+
+  **August 26nd 2021** - The sorting algorithms are working! I've implemented a bitwise radix sort for larger stacks and a selection sort for smaller stacks. Still gotta test it extensively, and see what I can optimize.

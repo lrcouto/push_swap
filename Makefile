@@ -6,7 +6,7 @@
 #    By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 00:46:31 by lcouto            #+#    #+#              #
-#    Updated: 2021/08/18 18:55:18 by lcouto           ###   ########.fr        #
+#    Updated: 2021/08/25 20:31:52 by lcouto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RM			= /bin/rm -f
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
-SUBDIRS		= main stack
+SUBDIRS		= main stack sort
 
 SRCS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_SRCS)/, $(dir)))
 OBJS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))

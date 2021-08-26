@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:07 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/22 21:48:48 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/26 01:53:53 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_board
 {
 	t_node	*a;
 	t_node	*b;
+	int		node_quantity;
+	int		largest_number;
 }				t_board;
 
 /*
@@ -99,5 +101,18 @@ void	rotate_both(t_board *stack);
 void	reverse_rotate_a(t_board *stack);
 void	reverse_rotate_b(t_board *stack);
 void	reverse_rotate_both(t_board *stack);
+
+/*
+** SORTING OPERATIONS:
+*/
+
+void	radix_sort(t_board *stack);
+int		get_bit(double largest_number, int i);
+int		most_significant_bit(double largest_number);
+bool	is_stack_ordered(t_board *stack);
+void	sort_two_nodes(t_board *stack);
+void	selection_sort(t_board *stack, int node_quantity);
+void	return_nodes_to_a(t_board *stack);
+void	sort_stacks(t_board *stack);
 
 #endif
