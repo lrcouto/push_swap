@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 16:20:06 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/15 02:23:30 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/26 23:06:03 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@
 ** ERROR MESSAGE MACROS:
 */
 
-# define NO_INPUT "This program expects a series of integers as an argument."
+# define NOT_DIGIT "ERROR: Input contains symbols that are not digits."
 
-# define NOT_DIGIT "Input contains symbols that are not digits."
+# define INPUT_TOO_HIGH "ERROR: Argument higher than the int limit."
 
-# define INPUT_TOO_HIGH "One of your arguments is higher than the int limit."
+# define INPUT_TOO_LOW "ERROR: Argument lower than the int limit."
 
-# define INPUT_TOO_LOW "One of your arguments is lower than the int limit."
-
-# define DUPLICATE_INPUT "Input contains duplicate arguments."
+# define DUPLICATE_INPUT "ERROR: Input contains duplicate arguments."
 
 /*
 ** ERROR HANDLING FUNCTIONS:

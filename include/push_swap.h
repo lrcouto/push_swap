@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:07 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/26 01:53:53 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 00:06:43 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "error_message.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <errno.h>
+# include <fcntl.h>
 # include <stdbool.h>
 
 /*
@@ -111,6 +111,8 @@ int		get_bit(double largest_number, int i);
 int		most_significant_bit(double largest_number);
 bool	is_stack_ordered(t_board *stack);
 void	sort_two_nodes(t_board *stack);
+void	sort_three_nodes(t_board *stack);
+void	sort_five_nodes(t_board *stack);
 void	selection_sort(t_board *stack, int node_quantity);
 void	return_nodes_to_a(t_board *stack);
 void	sort_stacks(t_board *stack);

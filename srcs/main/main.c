@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/26 02:07:16 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/26 23:07:42 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int	main(int argc, char **argv)
 
 	stack = (t_board *)ft_calloc(sizeof(t_board), 1);
 	stack->node_quantity = 0;
-	stack->largest_number = 0;
+	stack->largest_number = INT_MIN;
 	stack->a = NULL;
 	stack->b = NULL;
 	if (argc == 1)
-		exit_with_error(NO_INPUT);
+		exit(0);
 	check_for_errors(argv);
 	setup_stacks(stack, argv);
 	sort_stacks(stack);
