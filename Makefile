@@ -6,7 +6,7 @@
 #    By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/06 00:46:31 by lcouto            #+#    #+#              #
-#    Updated: 2021/08/25 20:31:52 by lcouto           ###   ########.fr        #
+#    Updated: 2021/08/27 16:56:49 by lcouto           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ clean:
 fclean:		clean
 			@make fclean --no-print-directory -C $(LIBFT_DIR)
 			@$(RM) $(NAME)
+			@$(RM) "ERROR_LOG.txt"
 
 re:			fclean all
 

@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 21:06:01 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/22 21:22:24 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 16:55:25 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	rotate_list(t_node **stack)
 {
-	t_node *head;
+	t_node	*head;
 
 	head = *stack;
 	if (head == NULL)

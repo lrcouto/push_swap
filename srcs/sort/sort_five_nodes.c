@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 23:12:32 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/27 00:03:00 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 16:54:40 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	find_smallest_position(t_board *stack, int node_quantity)
 	while (i < stack->node_quantity)
 	{
 		if (current->number == smallest)
-			break;
+			break ;
 		i++;
 		current = current->next;
 	}

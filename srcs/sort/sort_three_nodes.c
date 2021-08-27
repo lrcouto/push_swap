@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 20:18:48 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/26 22:44:44 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 16:54:21 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_three_nodes(t_board *stack)
 		|| (first > second && first > third && second > third)
 		|| (first < second && first < third && second > third))
 		swap_a(stack);
-	if (is_stack_ordered(stack) == true)
+	if (is_stack_ordered(stack, stack->node_quantity) == true)
 		return ;
 	set_int_values(&first, &second, &third, stack);
 	if (first < second && first > third && second > third)
