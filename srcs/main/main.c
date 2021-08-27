@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:04:22 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/26 23:07:42 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 13:22:14 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,20 @@ void	node_add_back(t_node **list, t_node *new_node)
 	new_node->previous = current;
 }
 
-void	setup_stacks(t_board *stack, char **argv)
+void	setup_stacks(t_board *stack, int *normalized)
 {
 	int		i;
 	t_node	*new_node;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (i < stack->node_quantity)
 	{
 		new_node = (t_node *)ft_calloc(sizeof(t_node), 1);
-		new_node->number = ft_atoi(argv[i]);
+		new_node->number = normalized[i];
 		new_node->next = NULL;
 		new_node->previous = NULL;
 		node_add_back(&stack->a, new_node);
-		stack->node_quantity += 1;
+		stack->nodes_on_a += 1;
 		if (new_node->number > stack->largest_number)
 			stack->largest_number = new_node->number;
 		i++;
@@ -64,16 +64,20 @@ void	setup_stacks(t_board *stack, char **argv)
 int	main(int argc, char **argv)
 {
 	t_board	*stack;
+	int		*normalized;
 
 	stack = (t_board *)ft_calloc(sizeof(t_board), 1);
-	stack->node_quantity = 0;
+	stack->node_quantity = argc - 1;
+	stack->nodes_on_a = 0;
+	stack->nodes_on_b = 0;
 	stack->largest_number = INT_MIN;
 	stack->a = NULL;
 	stack->b = NULL;
 	if (argc == 1)
 		exit(0);
 	check_for_errors(argv);
-	setup_stacks(stack, argv);
+	normalized = normalize_by_index(argv, argc - 1);
+	setup_stacks(stack, normalized);
 	sort_stacks(stack);
 	exit(0);
 }

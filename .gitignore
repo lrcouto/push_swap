@@ -67,4 +67,5 @@ checker
 checker_linux
 tester.sh
 log_error
+pyviz.py
 ERROR_LOG.txt

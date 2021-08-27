@@ -22,3 +22,5 @@ Part of the basic curriculum at <a href='http://42sp.org.br'> 42 São Paulo</a>.
   **August 22nd 2021** - Implemented all the rules described on the push_swap subject document. Next up is figuring out my sorting algorithm.
 
   **August 26nd 2021** - The sorting algorithms are working! I've implemented a bitwise radix sort for larger stacks and a selection sort for smaller stacks. Still gotta test it extensively, and see what I can optimize.
+
+  **August 27nd 2021** - The program is functional, and passable. It's not particulary optimized - I picked radix sort because of ease of implementation rather than for it's particular effectivenes in this case - but it works well enough to get a passing grade.
