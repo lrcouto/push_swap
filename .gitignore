@@ -61,3 +61,10 @@ dkms.conf
 
 # Executables
 push_swap
+
+# Tester files
+checker
+checker_linux
+tester.sh
+log_error
+ERROR_LOG.txt

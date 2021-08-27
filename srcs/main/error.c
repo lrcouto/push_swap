@@ -6,7 +6,7 @@
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 17:24:57 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/15 02:40:33 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/26 23:09:10 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ void	check_for_errors(char **argv)
 
 void	exit_with_error(char *error_message)
 {
-	ft_putstr_fd(BOLD_RED, 1);
-	ft_putstr_fd("ERROR: ", 2);
-	ft_putstr_fd(RED, 1);
-	ft_putendl_fd(error_message, 2);
-	ft_putstr_fd(RESET_COLOR, 1);
-	exit(errno);
+	int	fd;
+
+	fd = open("ERROR_LOG.txt", O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	ft_putendl_fd(error_message, fd);
+	ft_putendl_fd("Error", 2);
+	close(fd);
+	exit(-1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_options.c                                     :+:      :+:    :+:   */
+/*   sort_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcouto <lcouto@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 00:44:29 by lcouto            #+#    #+#             */
-/*   Updated: 2021/08/26 02:08:01 by lcouto           ###   ########.fr       */
+/*   Updated: 2021/08/27 00:02:19 by lcouto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ bool	is_stack_ordered(t_board *stack)
 	int		number;
 	t_node	*current;
 
-	i = 0;
-	number = 0;
-	current = stack->a;
+	i = 1;
+	number = stack->a->number;
+	current = stack->a->next;
 	while(i < stack->node_quantity)
 	{
 		if (number > current->number)
@@ -50,6 +50,10 @@ void	sort_stacks(t_board *stack)
 		return ;
 	else if (stack->node_quantity == 2)
 		sort_two_nodes(stack);
+	else if (stack->node_quantity == 3)
+		sort_three_nodes(stack);
+	else if (stack->node_quantity == 5)
+		sort_five_nodes(stack);
 	else if (stack->node_quantity < 10)
 		selection_sort(stack, stack->node_quantity);
 	else
